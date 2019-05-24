@@ -1,0 +1,48 @@
+.divAfuera{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    z-index: 1000;
+    background-color: transparent;
+    display: flex;
+    
+}
+.divAdentro{
+    margin: auto auto;
+    width: 60%;
+    height: 50%;
+    margin-top: 30px;
+    background: white;
+    color: black;
+    border-radius: 2%;
+    z-index: 100000000;
+    border: #FF8A65 2px solid;
+    
+}
+
+.titleModal{
+    padding: 10%;
+    background: #FF8A65;
+    color: white;
+    font-weight: bold;
+}
+
+.nivelModal{
+    font-weight: bolder
+}
+
+.bodyModal{
+    padding: 2%;
+}
+
+.buttonModal{
+    border-radius: 20px;
+    background-color: white; 
+    color:#FF8A65;
+    border:#FF8A65 1.5px solid;
+    padding: 7px 36px;
+    font-weight: bolder;
+    bottom: 0;
+}

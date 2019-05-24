@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import { Form, Container, Row} from 'react-bootstrap';
 import firebase from '../../Firebase';
 import Footer from './Footer'
@@ -100,16 +101,18 @@ class Formulario extends Component {
         .catch((error) => {
           console.error("Error adding document: ", error);
         });
+
+        alert('Gracias por tu Opinión')
       }
 
     render() {
       const { ubicacion, description, lugar,entretenimiento,bancos, metro, salud,comida, tiendas} = this.state;
       return (
          <Container>
-        <Row className="form">
-  
+           <Link to="/Filtro" className="vector"><img src="https://raw.githubusercontent.com/AnaPaulaMontap/hackathon-here/master/src/Componentes/camila/Vector.png" alt="vector"/></Link>
+        <Row className="form">  
         <div className="formStyle">
-        <h4> Tu opinión ayuda a hacer crecer City for all</h4>
+        <h4> Tu opinión ayuda a hacer crecer Cityforall</h4>
 
         <Form onSubmit={this.onSubmit} > 
 

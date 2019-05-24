@@ -7,7 +7,19 @@
   height: 40vmin;
   pointer-events: none;
 }
+.vector{
+  position: absolute;
+  left: 10px;
+}
 
+.vectorMapa{
+  position: absolute;
+  left: 14px;
+  top: 75px;
+  z-index: 1000000;
+  padding: 2%;
+  background-color: white
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

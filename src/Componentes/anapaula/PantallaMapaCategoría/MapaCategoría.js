@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Map, TileLayer , Marker, Popup} from 'react-leaflet';
+import { Link } from 'react-router-dom';
 import {iconMall,iconMuseo,iconCine,iconBanco} from './vectores'
 import Footer from '../../molu/Footer'
+import Modal from './Modal'
 //import vectorMapa from './Asserts/pinMapa.png'
 import './MapaCategoría.css'
 
@@ -23,13 +25,29 @@ constructor(props) {
      entretenimientoData: props.data,
      bancoBCI: false,
      bancoEstado: false,
-     mapsCoordinates: [-33.4726900, -70.6472400]
+     mapsCoordinates: [-33.4726900, -70.6472400],
+     modal: false,
   }
    
     this.BCI=this.BCI.bind(this)
     this.BancoEstado=this.BancoEstado.bind(this)
- 
-}
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  openModal(item){
+    this.setState({
+      ...this.state,
+      modal: item,
+    })
+  }
+  closeModal(){
+    this.setState({
+      ...this.state,
+      modal:false,
+    })
+  }
+
 
 componentDidMount(){ 
   let enjoyArr =[]
@@ -40,6 +58,7 @@ componentDidMount(){
       name: item.nombre,
       categories: item.categoria,
       cordinates: [item.latitud, item.longitud],
+      data: item
     })   
   })
 
@@ -271,6 +290,8 @@ BCI () {
 
 
 
+
+
 render() { 
   
   const markerEnjoy = this.state.entretenimiento ? ( this.state.entretenimiento.map((item)=>{
@@ -280,8 +301,11 @@ render() {
         position={item.cordinates}
         ref={this.marker}
         key={item.name}
+        onClick={()=>this.openModal(item.data)}
         icon={iconMall}>
-        <Popup>{item.name}</Popup>
+        { this.state.modal &&  
+            <Modal close={this.closeModal} data={this.state.modal}/> 
+        }
         </Marker>    
       )
     }if( item.categories === "Cine"){
@@ -290,8 +314,11 @@ render() {
           position={item.cordinates}
           ref={this.marker}
           key={item.name}
+          onClick={()=>this.openModal(item.data)}
           icon={iconCine}>
-          <Popup>{item.name}</Popup>
+          { this.state.modal && 
+            <Modal close={this.closeModal} data={this.state.modal}/>
+          }
           </Marker>    
         )
     }if(item.categories === "Museos"){
@@ -300,18 +327,24 @@ render() {
         position={item.cordinates}
         ref={this.marker}
         key={item.name}
+        onClick={()=>this.openModal(item.data)}
         icon={iconMuseo}>
-        <Popup>{item.name}</Popup>
+        { this.state.modal && 
+            <Modal close={this.closeModal} data={this.state.modal}/>
+        }
         </Marker>    
-      )
+      ) 
     }else{
     return (
     <Marker
     position={item.cordinates}
     ref={this.marker}
+    onClick={()=>this.openModal(item.data)}
     key={item.name}
     >
-    <Popup>{item.name}</Popup>
+    { this.state.modal && 
+            <Modal close={this.closeModal} data={this.state.modal}/>
+      }
     </Marker>    
   )}
   })
@@ -325,7 +358,7 @@ render() {
       key={item.address}
       icon={iconBanco}
       >
-      <Popup>{item.banco}</Popup>
+      <Popup><p>Banco:{item.banco}</p><p>Dirección:{item.adsress}</p></Popup>
       </Marker>    
     )
    })): null
@@ -338,13 +371,14 @@ render() {
        key={item.address}
        icon={iconBanco}
        >
-       <Popup>{item.banco}</Popup>
+       <Popup><p>Banco:{item.banco}</p><p>Dirección:{item.address}</p></Popup>
        </Marker>    
      )
     })): null
   
    return (
      <div>
+       <Link to="/Filtro" className="vectorMapa"><img src="https://raw.githubusercontent.com/AnaPaulaMontap/hackathon-here/master/src/Componentes/camila/Vector.png" alt="vector"/></Link>
      <Map 
         center={this.state.mapsCoordinates} 
         zoom={this.state.options.zoom} 

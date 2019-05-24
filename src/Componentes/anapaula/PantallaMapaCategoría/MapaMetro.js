@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Map, TileLayer , Marker, Popup} from 'react-leaflet';
+import { Link } from 'react-router-dom';
 import {iconMetroOkL1, iconMetroOkL2, iconMetroOkL3, iconMetroOkL4, iconMetroOkL4a, iconMetroOkL5,iconMetroOkL6} from './vectores';
 import {iconMetroMaloL1, iconMetroMaloL3, iconMetroMaloL4, iconMetroMaloL4a,iconMetroMaloL6,iconMetroMaloL2, iconMetroMaloL5} from './vectores';
 import Footer from '../../molu/Footer'
@@ -157,7 +158,7 @@ render() {
     position={item.cordinates}
     ref={this.marker}
     icon={iconMetroMaloL4a}
-    >
+    
     key={item.name}
     >
     <Popup>{item.name}</Popup>
@@ -169,7 +170,6 @@ render() {
     position={item.cordinates}
     ref={this.marker}
     icon={iconMetroOkL5}
-    >
     key={item.name}
     >
     <Popup>{item.name}</Popup>
@@ -181,7 +181,6 @@ render() {
     position={item.cordinates}
     ref={this.marker}
     icon={iconMetroMaloL5}
-    >
     key={item.name}
     >
     <Popup>{item.name}</Popup>
@@ -193,7 +192,7 @@ render() {
     position={item.cordinates}
     ref={this.marker}
     icon={iconMetroOkL6}
-    >
+    
     key={item.name}
     >
     <Popup>{item.name}</Popup>
@@ -205,7 +204,7 @@ render() {
     position={item.cordinates}
     ref={this.marker}
     icon={iconMetroMaloL6}
-    >
+    
     key={item.name}
     >
     <Popup>{item.name}</Popup>
@@ -219,6 +218,7 @@ render() {
   
    return (
      <div>
+    <Link to="/Filtro" className="vectorMapa"><img src="https://raw.githubusercontent.com/AnaPaulaMontap/hackathon-here/master/src/Componentes/camila/Vector.png" alt="vector"/></Link>
      <Map 
         center={this.state.mapsCoordinates} 
         zoom={this.state.options.zoom} 

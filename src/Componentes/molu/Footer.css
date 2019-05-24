@@ -7,16 +7,22 @@
     bottom: 0px;
     width: 100%;
     background: #20201E;
-    height: 40px;
-    z-index: 1;
+    height: 60px;
+    z-index: 10000;
+    color: aliceblue
 }
 
 .footer i {
-    font-size: 20px;
+    font-size: 25px;
     color: white;
 }
 
 .far .fas {
     display: flex;
     flex-flow: row wrap;
+}
+
+.textFooter{
+    text-decoration: none;
+    color: aliceblue;
 }

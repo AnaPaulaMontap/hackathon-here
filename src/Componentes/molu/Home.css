@@ -5,9 +5,26 @@
     display: flex;   
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    color: aliceblue;
+    vertical-align: middle;
     padding-top: 5rem;
     text-align: center;
+}
+
+.textHome{
+    position: absolute;
+    top:25%;
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.titleHome{
+    font-weight: bolder;
+    font-size: 50px;
+}
+
+.homeText{
+    padding: 1%;
+    font-size: 20px;
+    font-weight: inherit;
 }
 

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Map, TileLayer , Marker, Popup} from 'react-leaflet';
 import {iconMetroOkL1, iconMetroOkL2, iconMetroOkL3, iconMetroOkL4, iconMetroOkL4a, iconMetroOkL5,iconMetroOkL6} from './vectores';
 import {iconMetroMaloL1, iconMetroMaloL3, iconMetroMaloL4, iconMetroMaloL4a,iconMetroMaloL6,iconMetroMaloL2, iconMetroMaloL5} from './vectores';
+import Footer from '../../molu/Footer'
 import './MapaCategoría.css';
-import Formulario from '../../molu/Form'
 
 class MapasMetro extends Component {
 constructor(props) {
@@ -225,7 +225,6 @@ render() {
   
    return (
      <div>
-       <Formulario/>
      <Map 
         center={this.state.mapsCoordinates} 
         zoom={this.state.options.zoom} 
@@ -236,6 +235,7 @@ render() {
       {marker}     
 
      </Map>
+     <Footer/>
      </div>
    );
 

@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import './MapaCategoría.css'
-import back from '../../camila/Vector.png'
+import './MapaCategoría.css';
+ import {Link} from 'react-router-dom';
+// import back from '../../camila/Vector.png';
+// import metro from '../../../Json/metro.json';
+// import entretencion from '../../../Json/entretencion.json';
+// import MapaCategoria from './MapaCategoría';
+// import MapaMetro from './MapaMetro'
 
 class Filtro extends Component {
     constructor(props) {
@@ -13,11 +18,13 @@ class Filtro extends Component {
             bank:false,
             metro: false,
             enjoy: false,
+            titanic:false,
         }
     this.handleChangeEnjoy = this.handleChangeEnjoy.bind(this);
     this.handleChangeBank = this.handleChangeBank.bind(this);
     this.handleChangeMetro = this.handleChangeMetro.bind(this);
     this.handleNavegation = this.handleNavegation.bind(this);
+    //this.handleChangeTitanic = this.handleChangeTitanic.bind(this);
     }
 
     handleChangeEnjoy (){
@@ -48,13 +55,31 @@ class Filtro extends Component {
 
     }
     handleNavegation (){
+       if(this.state.titanic){
+       if(this.state.metro){
+            this.props.history.push("/Metro")
 
+        }if(this.state.bank || this.state.enjoy){
+            this.props.history.push("/Entretencion")
+        }
+    }
     }
 
+    // handleChangeTitanic (){
+
+    //     this.setState({
+    //         ...this.state,
+    //          titanic: true,
+    //      })
+    // }
+
     render(){
+
+        const button = this.state.bank && this.state.enjoy ?  <Link className="buttonNext" to="/Entretencion">VER LUGARES</Link> :  <Link className="buttonNext" to="/Metro"> VER LUGARES</Link>
+
         return (
             <div className="filter">
-            <img src= {back} alt="back" className="back"/>
+            {/* <img src= {back} alt="back" className="back"/> */}
             <div className="title">
                 <h2> ¿Que estas Buscando Hoy?</h2>
                 <p>Selecciona las categorías que te interesaría conocer</p>
@@ -84,8 +109,9 @@ class Filtro extends Component {
                     </div>
 
                 </div>
-
-                <button className="buttonNext" onClick={this.handleNavegation}> VER LUGARES </button>
+                        {button}
+                {/* <button className="buttonNext" onClick={this.handleChangeTitanic}> VER LUGARES </button>
+                {this.handleNavegation()} */}
             </div>
         )
     }

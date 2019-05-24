@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Form, Container, Row} from 'react-bootstrap';
-import ReactDOM from 'react-dom';
 import firebase from '../../Firebase';
-import {Link} from 'react-router-dom';
+import Footer from './Footer'
 import "./Form.css";
 
 class Formulario extends Component {
@@ -96,7 +95,7 @@ class Formulario extends Component {
             accesibilidad:{},
             categoria:'',
           });
-          this.props.history.push("/")
+          
         })
         .catch((error) => {
           console.error("Error adding document: ", error);
@@ -104,7 +103,7 @@ class Formulario extends Component {
       }
 
     render() {
-      const { ubicacion, description, lugar, accesibilidad, entretenimiento,bancos, metro, salud,comida, tiendas} = this.state;
+      const { ubicacion, description, lugar,entretenimiento,bancos, metro, salud,comida, tiendas} = this.state;
       return (
          <Container>
         <Row className="form">
@@ -116,7 +115,7 @@ class Formulario extends Component {
 
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label> Nombre del Lugar </Form.Label>
-          <input type="text" class="form-control" name="lugar" value={lugar} onChange={this.onChange} placeholder="Escribe aquí" />
+          <input type="text" className="form-control" name="lugar" value={lugar} onChange={this.onChange} placeholder="Escribe aquí" />
         </Form.Group>
         
         <Form.Group controlId="exampleForm.ControlSelect1">
@@ -133,15 +132,15 @@ class Formulario extends Component {
 
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label> Ubicación </Form.Label>
-          <input type="text" class="form-control" name="ubicacion" value={ubicacion} onChange={this.onChange} placeholder="Escribe aquí" />        
+          <input type="text" className="form-control" name="ubicacion" value={ubicacion} onChange={this.onChange} placeholder="Escribe aquí" />        
           </Form.Group>
 
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Descripción</Form.Label>
-          <textArea class="form-control" name="description" onChange={this.onChange} placeholder="Escribe aquí" cols="80" rows="3">{description}</textArea>
+          <input type="text" className="form-control" name="description" value={description} onChange={this.onChange} placeholder="Escribe aquí" cols="80" rows="3"/>
         </Form.Group>
 
-        <p>  Selecciona las opciones de accesibilidad que cumple  el lugar</p>
+        <p>Selecciona las opciones de accesibilidad que cumple  el lugar</p>
 
 
            <div>
@@ -163,16 +162,14 @@ class Formulario extends Component {
           </div>
 
       </Form>
-      </div>
-      
       <div className="btn">
-      <div> <button> Cancelar </button></div>
-      <div>  <button className="btnSave" type="submit" onClick={this.onSubmit}> Guardar </button></div>
+      <div>  <button className="btnSave" to="/Filtro" type="submit" onClick={this.onSubmit}> Guardar </button></div>
       </div>
-
-
+      </div>
       </Row>
+      <Footer/>
       </Container>
+      
       );
     }
   }

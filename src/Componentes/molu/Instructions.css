@@ -6,13 +6,10 @@
     flex-direction: column;
     align-items: center;
     color: black;
-    padding-top: 5rem;
+    padding: 3%;
     text-align: center;
+    margin-top: 10%
 
-}
-
-.inst h3{
-    text-align: left;
 }
 
 .instStyle {
@@ -27,17 +24,17 @@
 }
 
 .boxImg {
-    width: 45px;
+    width: 100px;
+    width: 100px;
     margin: 15px;
 }
 
-button {
+.buttonIntructions {
     border-radius: 20px;
     background-color: white; 
     color:#FF8A65;
     border:#FF8A65 1.5px solid;
     padding: 7px 36px;
-    font-weight: 700;
-    position: absolute;
+    font-weight: bolder;
     bottom: 0;
 }

@@ -7,6 +7,8 @@ import Instructions from './Componentes/molu/Instructions'
 import Filtro from './Componentes/anapaula/PantallaMapaCategoría/Filtro'
 import MapaCategoria from './Componentes/anapaula/PantallaMapaCategoría/MapaCategoría'
 import MapaMetro from './Componentes/anapaula/PantallaMapaCategoría/MapaMetro'
+import Recorrido from './Componentes/anapaula/Rutas/Route'
+import Form from './Componentes/molu/Form'
 import './App.css';
 
 
@@ -16,27 +18,31 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">         
           <Switch>           
-            <Route
-              exact
-              path="/"
+            <Route 
+              path="/Home"
               render={() => <Home/>} />
             <Route
-              exact
               path="/Intructions"
               render={() => <Instructions/>}/> 
             <Route
-              exact
               path="/Filtro"
               render={() => <Filtro/>}/> 
             <Route
-              exact
               path="/Entretencion"
               render={() => <MapaCategoria data={entretencion}/>}/>  
             <Route
-              exact
               path="/Metro"
-              render={() => <MapaMetro data={metro}/>}/>                     
-          <Redirect path="*" to="/"></Redirect>      
+              render={() => <MapaMetro data={metro} />}
+            />  
+            <Route
+              path="/Rutas"
+              render={() =><Recorrido/>}
+            /> 
+            <Route
+              path="/Formulario"
+              render={() => <Form/>}
+            />                     
+           <Redirect path="*" to="/Home"></Redirect>       
           </Switch>
         </div>
       </BrowserRouter>

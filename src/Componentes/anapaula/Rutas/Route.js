@@ -1,11 +1,8 @@
 import React from 'react';
 import Footer from '../../molu/Footer';
-import Home from '../../molu/Home';
 import './Route.css';
-import Instructions from '../../molu/Instructions';
-import Form from '../../molu/Form';
 
-export default class Route extends React.Component {
+export default class Recorrido extends React.Component {
 
    constructor(props) {
       super(props);
@@ -266,13 +263,10 @@ getUI(map, layers,options) {
 
    render(){
        return (
-         <div>
-           <Home/>
-           <Instructions/>
-           <Form/>
+        <div>
         <div className="route">
-        <div id="map" style={{position:'absolute', width:'49%', height:'100%', background:'grey' }}></div>
-        <div id="panel" style={{position:'absolute', width:'49%', left:'51%', height:'100%', background:'inherit'}} ></div>
+        <div id="map" style={{position:'relative', width:'100%', height:'50%', background:'grey' }}></div>
+        <div id="panel" style={{position:'relative', width:'100%', height:'50%', background:'inherit'}} ></div>
         </div>
         <Footer/>
         </div>

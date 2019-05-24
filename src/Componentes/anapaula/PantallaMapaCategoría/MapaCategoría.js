@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Map, TileLayer , Marker, Popup} from 'react-leaflet';
 import {iconMall,iconMuseo,iconCine,iconBanco} from './vectores'
+import Footer from '../../molu/Footer'
 //import vectorMapa from './Asserts/pinMapa.png'
 import './MapaCategoría.css'
 
@@ -250,8 +251,7 @@ BCI () {
           lat : response.Response.View[0].Result[0].Location.NavigationPosition[0].Latitude,
           long: response.Response.View[0].Result[0].Location.NavigationPosition[0].Longitude,
           cordinates:[response.Response.View[0].Result[0].Location.NavigationPosition[0].Latitude,response.Response.View[0].Result[0].Location.NavigationPosition[0].Longitude],
-          address: response.Response.View[0].Result[0].Location.Address.Label,
-                
+          address: response.Response.View[0].Result[0].Location.Address.Label,                
        }})
        .catch((error)=>{
           return console.log(of)
@@ -264,7 +264,7 @@ BCI () {
            ...this.state,
            bancoEstado: data
          })
-         console.log(data)
+         
         })
     
     }
@@ -356,7 +356,8 @@ render() {
       {markerBCI} 
       {markerBEstado}    
 
-     </Map>
+      </Map>
+      <Footer/>
      </div>
    );
 

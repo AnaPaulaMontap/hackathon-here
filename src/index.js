@@ -1,12 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-//import metro from './Json/metro.json'
-//import MapasMetro from './Componentes/anapaula/PantallaMapaCategoría/MapaMetro'
-// import entretenimiento from './Json/entretencion.json'
-// import MapasCategorias from './Componentes/anapaula/PantallaMapaCategoría/MapaCategoría'
-//import Filtro from './Componentes/anapaula/PantallaMapaCategoría/Filtro'
+import App from './App'
+
 import * as serviceWorker from './serviceWorker';
 
 //ReactDOM.render(<Filtro/>, document.getElementById('root'));

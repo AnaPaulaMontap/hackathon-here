@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
 import AddressForm from './AddressForm';
 
 
-class Andress extends Component {
+class Adress extends Component {
   render() {
     return (
 
@@ -20,4 +19,4 @@ class Andress extends Component {
   }
 }
 
-export default Andress
+export default Adress

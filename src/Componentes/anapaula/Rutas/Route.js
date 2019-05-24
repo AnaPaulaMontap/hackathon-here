@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from '../../molu/Footer';
 import './Route.css';
 
 export default class Recorrido extends React.Component {
@@ -10,7 +9,10 @@ export default class Recorrido extends React.Component {
       this.state={
         app_id: 'LP2ZyQJ7qm17fYnZLySE',
         app_code: '4kTbv-S-8k6wr44_jerEbQ',
+        lat: props.lat,
+        lng: props.lng,
       }
+
       this.platform = null;
       this.map = null;
       this.bubble = null;
@@ -24,6 +26,8 @@ export default class Recorrido extends React.Component {
     this.addWaypointsToPanel = this.addWaypointsToPanel.bind(this)
     this.addManueversToPanel=  this.addManueversToPanel.bind(this)
     this.addSummaryToPanel = this.addSummaryToPanel.bind(this)
+
+    console.log(props)
    }
 
 getPlatform() {
@@ -48,6 +52,25 @@ getUI(map, layers,options) {
 }
 
    componentDidMount (){
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          this.setState({
+            ...this.state,
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+            error: null,
+          });
+        },
+        (error) => {
+          this.setState({
+            ...this.state,
+            error: error.message
+          })
+        }
+      );
+  }
     this.platform = this.getPlatform();
     var layers =window.devicePixelRatio || 1;
     
@@ -63,8 +86,8 @@ getUI(map, layers,options) {
     this.map = this.getMap(
         mapContainer,
         defaultLayers.normal.map,{
-        center: {lat:-33.4212103, lng:-70.6184262},
-        zoom: 13,
+        center: {lat:this.state.lat, lng:this.state.lng},
+        zoom: 12,
         pixelRatio: layers
       });
 
@@ -85,30 +108,49 @@ getUI(map, layers,options) {
 
 
    calculateRouteFromAtoB (platform) {
-    var router = platform.getRoutingService(),
+     if( this.props.startingPoint.lat && this.props.startingPoint.long && this.props.endingPoint.lat && this.props.endingPoint.long !== ""){
+      var router = platform.getRoutingService(),
       routeRequestParams = {
         mode: 'shortest;car',
         representation: 'display',
-        waypoint0: '-33.4168,-70.6058', // St Paul's Cathedral
-        waypoint1: '-33.4021,-70.5782',  // Tate Modern
+        waypoint0: this.props.startingPoint.lat + "," + this.props.startingPoint.long, // St Paul's Cathedral
+        waypoint1: this.props.endingPoint.lat + "," + this.props.endingPoint.long, // Tate Modern
         routeattributes: 'waypoints,summary,shape,legs',
         maneuverattributes: 'direction,action',
         language: 'es-ES'
-      };
-  
+      };  
   
     router.calculateRoute(
       routeRequestParams,
       this.onSuccess,
       this.onError
-    );
-    
+    )
+     }else{
+
+      var router2 = platform.getRoutingService(),
+      routeRequestParams2 = {
+        mode: 'shortest;car',
+        representation: 'display',
+        waypoint0: '-33.4168,-70.6058', // St Paul's Cathedral
+        waypoint1:  '-33.4021,-70.5782', // Tate Modern
+        routeattributes: 'waypoints,summary,shape,legs',
+        maneuverattributes: 'direction,action',
+        language: 'es-ES'
+      }  
+  
+    router2.calculateRoute(
+      routeRequestParams2,
+      this.onSuccess,
+      this.onError
+    )
+
+    }
   }
 
   onSuccess(result) {    
-       
+    console.log(result)      
     var route = result.response.route[0]; 
-    console.log(route)
+    
     this.addRouteShapeToMap(route);
     this.addManueversToMap(route);  
     this.addWaypointsToPanel(route.waypoint);
@@ -265,10 +307,9 @@ getUI(map, layers,options) {
        return (
         <div>
         <div className="route">
-        <div id="map" style={{position:'relative', width:'100%', height:'50%', background:'grey' }}></div>
-        <div id="panel" style={{position:'relative', width:'100%', height:'50%', background:'inherit'}} ></div>
+        <div id="map" style={{position:'relative', width:'100%', height:'40%', background:'grey' }}></div>
+        <div id="panel" style={{position:'relative', width:'100%', height:'40%', background:'inherit'}} ></div>
         </div>
-        <Footer/>
         </div>
        )
    }

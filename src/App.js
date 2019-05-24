@@ -7,7 +7,7 @@ import Instructions from './Componentes/molu/Instructions'
 import Filtro from './Componentes/anapaula/PantallaMapaCategoría/Filtro'
 import MapaCategoria from './Componentes/anapaula/PantallaMapaCategoría/MapaCategoría'
 import MapaMetro from './Componentes/anapaula/PantallaMapaCategoría/MapaMetro'
-import Recorrido from './Componentes/anapaula/Rutas/Route'
+import AdressComplete from './Componentes/anapaula/Rutas/AdressComplete'
 import Form from './Componentes/molu/Form'
 import './App.css';
 
@@ -35,8 +35,8 @@ class App extends Component {
               render={() => <MapaMetro data={metro} />}
             />  
             <Route
-              path="/Rutas"
-              render={() =><Recorrido/>}
+              path="/Direcciones"
+              render={() =><AdressComplete/> }
             /> 
             <Route
               path="/Formulario"

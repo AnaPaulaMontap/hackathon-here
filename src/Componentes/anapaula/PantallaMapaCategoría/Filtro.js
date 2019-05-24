@@ -87,11 +87,11 @@ class Filtro extends Component {
                 <div className="row">
                     <div className="column">
                         <div className="enjoyPhoto" onClick={this.handleChangeEnjoy} style={{
-                backgroundImage: !this.state.wrapperStyleEnjoy ? `url('./assets/cine.jpg')` : `url('./assets/entretenimiento.png')` 
+                backgroundImage: !this.state.wrapperStyleEnjoy ? `url('https://raw.githubusercontent.com/AnaPaulaMontap/hackathon-here/master/public/assets/cine.jpg')` : `url('https://raw.githubusercontent.com/AnaPaulaMontap/hackathon-here/master/public/assets/entretenimiento.png')` 
             }}/>
                         <span className="categories">ENTRETENIMIENTO</span>                                   
                         <div className="metroPhoto" onClick={this.handleChangeMetro}  style={{
-                backgroundImage: !this.state.wrapperStyleMetro ? `url('./assets/metro.jpg')` : `url('./assets/metroo.png')` }}/>
+                backgroundImage: !this.state.wrapperStyleMetro ? `url('https://raw.githubusercontent.com/AnaPaulaMontap/hackathon-here/master/public/assets/metro.jpg')` : `url('https://raw.githubusercontent.com/AnaPaulaMontap/hackathon-here/master/public/assets/metroo.png')` }}/>
                         <span className="categories"> METRO </span>
                         <div className="foodPhoto"/>
                         <span className="categories"> COMIDA</span> 
@@ -100,7 +100,7 @@ class Filtro extends Component {
 
                     <div className="column">
                     <div className="bankPhoto" onClick={this.handleChangeBank}  style={{
-                backgroundImage: !this.state.wrapperStyleBank ? `url('./assets/cajero.png')` : `url('./assets/Banco-cajero.png')` }}/>
+                backgroundImage: !this.state.wrapperStyleBank ? `url('https://raw.githubusercontent.com/AnaPaulaMontap/hackathon-here/master/public/assets/cajero.png')` : `url('https://raw.githubusercontent.com/AnaPaulaMontap/hackathon-here/master/public/assets/Banco-cajero.png')` }}/>
                     <span className="categories">BANCOS</span>                    
                     <div className="hospitalPhoto"/>
                     <span className="categories">CENTROS DE SALUD</span>               

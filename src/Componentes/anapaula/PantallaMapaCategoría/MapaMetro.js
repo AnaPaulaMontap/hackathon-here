@@ -59,7 +59,6 @@ render() {
     position={item.cordinates}
     ref={this.marker}
     icon={iconMetroOkL1}
-    >
     key={item.name}
     >
     <Popup>{item.name}</Popup>
@@ -70,7 +69,6 @@ render() {
     position={item.cordinates}
     ref={this.marker}
     icon={iconMetroMaloL1}
-    >
     key={item.name}
     >
     <Popup>{item.name}</Popup>
@@ -82,7 +80,6 @@ render() {
     position={item.cordinates}
     ref={this.marker}
     icon={iconMetroOkL2}
-    >
     key={item.name}
     >
     <Popup>{item.name}</Popup>
@@ -94,7 +91,6 @@ render() {
     position={item.cordinates}
     ref={this.marker}
     icon={iconMetroMaloL2}
-    >
     key={item.name}
     >
     <Popup>{item.name}</Popup>
@@ -106,7 +102,6 @@ render() {
     position={item.cordinates}
     ref={this.marker}
     icon={iconMetroOkL3}
-    >
     key={item.name}
     >
     <Popup>{item.name}</Popup>
@@ -118,7 +113,6 @@ render() {
     position={item.cordinates}
     ref={this.marker}
     icon={iconMetroMaloL3}
-
     key={item.name}
     >
     <Popup>{item.name}</Popup>

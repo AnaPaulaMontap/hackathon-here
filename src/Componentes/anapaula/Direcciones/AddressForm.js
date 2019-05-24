@@ -16,8 +16,9 @@ class AddressForm extends Component {
             city: '',
             state: '',
             postalCode: '',
-            country: ''
+            country: '',
           },
+          house: '',
           query:'',
           locationId: '',
           isChecked: false,
@@ -55,11 +56,13 @@ class AddressForm extends Component {
           if (response.suggestions.length > 0) {
             const id = response.suggestions[0].locationId;
             const address = response.suggestions[0].address;
+            const houseNumber= response.suggestions[0].address.houseNumber;
             this.setState({
                 ...this.state,
               address : address,
               query : query,
-              locationId: id
+              locationId: id,
+              house: houseNumber,
             })
           } else {
                 return false
@@ -79,8 +82,9 @@ class AddressForm extends Component {
         city: '',
         state: '',
         postalCode: '',
-        country: ''
+        country: '',
       },
+      house: '',
       query: '',
       locationId: '',
       isChecked: false,
@@ -99,7 +103,7 @@ class AddressForm extends Component {
         address:{
             ...this.state.address,
             [id]: val
-        }
+        },
     });
   }
 
@@ -119,7 +123,7 @@ class AddressForm extends Component {
         + this.state.address.country;
        
     }
-    console.log(params)
+   
     
     fetch('https://geocoder.api.here.com/6.2/geocode.json'
     +'?app_code=' + this.state.app_code
@@ -142,7 +146,7 @@ class AddressForm extends Component {
               city: location.Address.City,
               state: location.Address.State,
               postalCode: location.Address.PostalCode,
-              country: location.Address.Country
+              country: location.Address.Country,              
             },
             coords: {
               lat: location.DisplayPosition.Latitude,
@@ -190,6 +194,7 @@ class AddressForm extends Component {
 
   render() {
     let result = this.alert();
+    console.log(this.state.query)
     return (
         <div className="container">
           <AddressSuggest
@@ -200,6 +205,7 @@ class AddressForm extends Component {
             street={this.state.address.street}
             city={this.state.address.city}
             state={this.state.address.state}
+            houseNumber={this.state.house}
             postalCode={this.state.address.postalCode}
             country={this.state.address.country}
             onChange={this.onAddressChange}

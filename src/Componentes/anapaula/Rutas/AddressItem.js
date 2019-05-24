@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Route.css'
 
 class AddressItem extends Component {
       constructor(props) {
@@ -29,10 +30,11 @@ class AddressItem extends Component {
 
     render() {
         return (
-            <div>
-                <input onChange={(e) => this.handleChangeInput(e)} value={this.state.start} placeholder="¿Donde quieres partir?"></input>
-                <input onChange={(e) => this.handleChangeInput2(e)} value={this.state.end} placeholder="¿A donde quieres llegar?"></input>
-                <button onClick={() => this.props.getCoordinates(this.state.start, this.state.end)}>Planificar</button>
+            <div className="route">
+                <input className="inputRoute" onChange={(e) => this.handleChangeInput(e)} value={this.state.start} placeholder="¿Donde quieres partir?"></input>
+                <hr></hr>
+                <input className="inputRoute" onChange={(e) => this.handleChangeInput2(e)} value={this.state.end} placeholder="¿A donde quieres llegar?"></input>
+                <button  className="buttonRoute"onClick={() => this.props.getCoordinates(this.state.start, this.state.end)}>Planificar Mi Ruta</button>
             </div>
         )
     }
